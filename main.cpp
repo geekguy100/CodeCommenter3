@@ -1,6 +1,6 @@
 //////////////////////////////////
 /*
-*		- Code Commentor -
+*		- Code Commenter -
 *		 by Kyle Grenier
 *		    8/30/2021
 *
