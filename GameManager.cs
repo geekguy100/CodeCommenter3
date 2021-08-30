@@ -11,6 +11,7 @@ using System.Linq;
 
 public class GameManager : Singleton<GameManager>
 {
+    cout << "WJASD";
     private bool paused = false;
     public bool Paused { get { return paused; } }
 

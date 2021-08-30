@@ -5,7 +5,7 @@
 *		    8/30/2021
 *
 * ABOUT:
-*		 Adds comments before keywords to scripts. 
+*		 Adds comments before keywords to scripts.
 *		 Created to automatically comment out Debug.Log() and
 *		 print() statements in my Unity C# scripts.
 */
@@ -20,29 +20,38 @@ using namespace std;
 
 void populateKeywords(ifstream & keywordsFile, vector<string> & keywordsVector);
 void addComments(ifstream & inputFile, ofstream & outputFile, const vector<string> & keywords);
+void initFileNames(string & inputFilePath, string & outputFilePath);
 int main()
 {
-	const string INFILE_NAME{ "Attacker.txt" };
-	const string OUTFILE_NAME{ "Output.txt" };
-	const string KEYWORDS_NAME{ "keywords.txt" };
+	//const string INFILE_NAME{ "Attacker.txt" };
+	//const string OUTFILE_NAME{ "Output.txt" };
+
+	const string KEYWORDS_FILE_NAME{ "keywords.txt" };
+	string infilePath;
+	string outfilePath;
+
+	// Get file paths from user.
+	initFileNames(infilePath, outfilePath);
 
 	// Vector of keywords
 	vector<string> keywords;
 
+
+
 	// Opening files
 	ifstream inputFile;
-	inputFile.open(INFILE_NAME);
+	inputFile.open(infilePath);
 	if (!inputFile)
 	{
-		cerr << "Could not open file '" << INFILE_NAME << "." << endl;
+		cerr << "Could not open file at path " << endl << "'" << infilePath << endl;
 		system("pause");
 		return 1;
 	}
 	ofstream outputFile;
-	outputFile.open(OUTFILE_NAME);
+	outputFile.open(outfilePath);
 
 	ifstream keywordsFile;
-	keywordsFile.open(KEYWORDS_NAME);
+	keywordsFile.open(KEYWORDS_FILE_NAME);
 
 	// Populating our keywords vector
 	populateKeywords(keywordsFile, keywords);
@@ -56,6 +65,16 @@ int main()
 
 	system("pause");
 	return 0;
+}
+
+void initFileNames(string & inputFilePath, string & outputFilePath)
+{
+	cout << "Path of input file (file to get code from): " << endl;
+	getline(cin, inputFilePath);
+	cout << endl;
+
+	cout << "Path of output file (file to push commented code to): " << endl;
+	getline(cin, outputFilePath);
 }
 
 // Populates a vector of keywords from a .txt file of keywords.
