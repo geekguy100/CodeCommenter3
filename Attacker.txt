@@ -1,0 +1,11 @@
+class Attacker
+{
+	private int hp;
+
+	void main()
+	{
+		Debug.Log();
+		Random stuff here.
+		print("You're mom!");
+	}
+}
