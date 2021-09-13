@@ -43,7 +43,7 @@ int main()
 	inputFile.open(infilePath);
 	if (!inputFile)
 	{
-		cerr << "Could not open file at path " << endl << "'" << infilePath << endl;
+        cerr << endl << "Could not open file at path " << endl << "'" << infilePath << endl << endl;
 		system("pause");
 		return 1;
 	}
